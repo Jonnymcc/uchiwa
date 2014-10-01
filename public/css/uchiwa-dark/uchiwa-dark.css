@@ -203,8 +203,20 @@ a {
   font-weight: bold; }
 
 .client .value {
-  overflow-wrap: break-word;
-  white-space: pre-line; }
+  overflow-wrap: break-word; }
+
+.client .value .ok {
+  color: green; }
+
+.client .value .warn {
+  color: yellow;
+  font-weight: bold
+}
+
+.client .value .critical {
+  color: red;
+  font-weight: bold
+}
 
 .client .value img {
   display: block; }

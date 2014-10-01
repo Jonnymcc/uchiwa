@@ -140,7 +140,14 @@
                   <span class="key pull-right">{{key}}</span>
                 </div>
                 <div class="col-sm-10">
-                  <span class="value" ng-bind-html="value | getTimestamp | richOutput"></span>
+                  <span ng-if="key != 'history'" class="value" ng-bind-html="value | getTimestamp | richOutput"></span>
+                  <span ng-if="key == 'history'" class="value" ng-repeat="value in selectedCheck.history track by $index">
+                    <span ng-switch="value">
+                      <span ng-switch-when="0" class="ok">{{value}}</span>
+                      <span ng-switch-when="1" class="warn">{{value}}</span>
+                      <span ng-switch-default class="critical">{{value}}</span>
+                    </span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -162,7 +169,13 @@
                 <span class="key pull-right">history</span>
               </div>
               <div class="col-sm-10">
-                <span class="value">{{selectedCheck.history}}</span>
+                <span class="value" ng-repeat="value in selectedCheck.history track by $index">
+                  <span ng-switch="value">
+                    <span ng-switch-when="0" class="ok">{{value}}</span>
+                    <span ng-switch-when="1" class="warn">{{value}}</span>
+                    <span ng-switch-default class="critical">{{value}}</span>
+                  </span>
+                </span>
               </div>
             </div>
             <div ng-repeat="(key, value) in selectedCheck.model">
